@@ -16,6 +16,10 @@ SimpleChess is in very early development stage. So it is currently only possible
 - Undo moves
 - Save and reload your match
 
+# Prerequisites
+
+- Visual Studio 2019 (Community)
+- DotNet 4.8 
 
 # Running
 Currently the stockfish engine is hardcoded.
