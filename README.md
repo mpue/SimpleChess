@@ -4,7 +4,7 @@ SimpleChess is a GUI Frontend for UCI Chess engines
 
 # How does it look?
 ```
-![Screenshot](images/screenshot.png "")
+![Screenshot](ChessGUI/images/screenshot.png "")
 ```
 
 # Current state
