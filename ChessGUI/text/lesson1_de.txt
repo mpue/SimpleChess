@@ -1,0 +1,3 @@
+﻿Erste Lektion
+Heute lernen wir die Schachgrundlagen. Fangen wir mit dem Brett an.
+Ein Schachbrett besteht aus 64 Feldern, die abwechselnd schwarz und weiß gefärbt sind.
