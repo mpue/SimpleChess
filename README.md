@@ -43,3 +43,6 @@ SimpleChess is in very early development stage. So it is currently only possible
 
 Grab a release from https://github.com/mpue/SimpleChess/releases and run SimpleChess.exe
 
+# But why?
+
+Yes I know, there's chess.com and lichess.org, and you can do a lot of stuff there. But imagine you get lost on an island during a plane crash as the only survivor. The only thing you could find is a laptop with SimpleChess on it and a bottle of California whiskey. Get it?
