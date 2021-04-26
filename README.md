@@ -26,10 +26,10 @@ SimpleChess is in very early development stage. So it is currently only possible
 
 # Prerequisites
 
-- Visual Studio 2019 (Community)
-- DotNet 4.8 
+- Windows 
+- Patience
 
 # Running
-Currently the stockfish engine is hardcoded.
 
-Checkout the sources, compile and put your stockfish.exe in the output directory
+Grab a release from https://github.com/mpue/SimpleChess/releases and run SimpleChess.exe
+
