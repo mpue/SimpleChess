@@ -261,11 +261,23 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\bishop_black_32.png" />
+    <Content Include="images\bishop_white_32.png" />
     <Content Include="images\chess.ico" />
     <Content Include="images\chess.png" />
     <Resource Include="move.wav" />
+    <Content Include="images\king_black_32.png" />
     <Content Include="images\king_black_check.png" />
+    <Content Include="images\king_white_32.png" />
     <Content Include="images\king_white_check.png" />
+    <Content Include="images\knight_black_32.png" />
+    <Content Include="images\knight_white_32.png" />
+    <Content Include="images\pawn_black_32.png" />
+    <Content Include="images\pawn_white_32.png" />
+    <Content Include="images\queen_black_32.png" />
+    <Content Include="images\queen_white_32.png" />
+    <Content Include="images\rook_black_32.png" />
+    <Content Include="images\rook_white_32.png" />
     <Content Include="text\lesson1_de.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

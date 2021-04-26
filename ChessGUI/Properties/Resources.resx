@@ -121,8 +121,14 @@
   <data name="bishop_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\bishop_black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bishop_black_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\bishop_black_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bishop_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\bishop_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bishop_white_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\bishop_white_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="board" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\board.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,11 +142,17 @@
   <data name="king_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\king_black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="king_black_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\king_black_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="king_black_check" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\king_black_check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="king_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\king_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="king_white_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\king_white_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="king_white_check" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\king_white_check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,8 +160,14 @@
   <data name="knight_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\knight_black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="knight_black_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\knight_black_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="knight_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\knight_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="knight_white_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\knight_white_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lesson1_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\text\lesson1_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -166,19 +184,37 @@
   <data name="pawn_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\pawn_black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="pawn_black_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\pawn_black_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pawn_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\pawn_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pawn_white_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\pawn_white_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="queen_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\queen_black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="queen_black_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\queen_black_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="queen_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\queen_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="queen_white_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\queen_white_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="rook_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\rook_black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="rook_black_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\rook_black_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="rook_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\rook_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rook_white_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\rook_white_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

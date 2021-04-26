@@ -221,6 +221,7 @@ namespace ChessGUI
             chessBoardControl.LastOpponentMove = null;
             chessBoardControl.ClearSelectiom();
             chessBoardControl.Refresh();
+            moveList.ResetCounter();
         }
 
         private void HandleQuit(object sender, EventArgs e)
@@ -277,6 +278,10 @@ namespace ChessGUI
                     }
                     timerView.ToggleTimer();
                     moveList.SetHistory(board.history);
+                    if (e.Move.capturedPiece != null)
+                    {
+                        moveList.AddPiece(e.Move.capturedPiece);
+                    }
                     // evaluationView.AddEvaluation(e.Move.Score);
                 }
                 

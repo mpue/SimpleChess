@@ -19,7 +19,7 @@ namespace SimpleChess
 
         private Piece oldPiece = null;
         private Piece newPiece = null;
-        private Piece capturedPiece = null;
+        public Piece capturedPiece = null;
 
         public bool IsCastle { get; set; } = false;
 
