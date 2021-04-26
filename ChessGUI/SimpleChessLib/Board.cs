@@ -459,6 +459,11 @@ namespace SimpleChess
             return fen.ToString();
         }
 
+        public void SetFenPosition(string fen)
+        {
+
+        }
+
         public string PrintBoard()
         {
             StringBuilder sb = new StringBuilder();

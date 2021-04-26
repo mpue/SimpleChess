@@ -77,6 +77,18 @@
     <Compile Include="Controls\ChessBoardControl.Designer.cs">
       <DependentUpon>ChessBoardControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ChessConsole.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ChessConsole.Designer.cs">
+      <DependentUpon>ChessConsole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ChessConsoleView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ChessConsoleView.Designer.cs">
+      <DependentUpon>ChessConsoleView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ConfigDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +113,7 @@
     <Compile Include="Controls\NoteView.Designer.cs">
       <DependentUpon>NoteView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\Interpreter.cs" />
     <Compile Include="Core\UCIClient.cs" />
     <Compile Include="Core\UCIProcess.cs" />
     <Compile Include="Exceptions\MaxTriesException.cs" />
@@ -138,6 +151,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ChessBoard.resx">
       <DependentUpon>ChessBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ChessConsole.resx">
+      <DependentUpon>ChessConsole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ChessConsoleView.resx">
+      <DependentUpon>ChessConsoleView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ConfigDialog.resx">
       <DependentUpon>ConfigDialog.cs</DependentUpon>

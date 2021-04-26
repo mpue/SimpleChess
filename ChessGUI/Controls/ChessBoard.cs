@@ -28,10 +28,12 @@ namespace ChessGUI
         private TimerView timerView;
         private NoteView noteView;
         private ConfigDialog configDialog;
+        private ChessConsoleView consoleView;
+
         public ChessBoard()
         {
             InitializeComponent();
-            
+
             moveList = new MoveList();
             moveList.GetType()
                 .GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
@@ -51,6 +53,7 @@ namespace ChessGUI
             moveList.DockTo(mainDock, DockStyle.Right);
 
             evaluationView = new EvaluationView();
+            evaluationView.TabText = "UCI Monitor";
             evaluationView.Show(mainDock, DockState.DockBottom);
 
             timerView = new TimerView();
@@ -64,6 +67,11 @@ namespace ChessGUI
             moveList.TabText = "Move history";
             configDialog = new ConfigDialog();
             configDialog.TabText = "Configuration";
+
+            consoleView = new ChessConsoleView();
+            
+            consoleView.Show(mainDock, DockState.DockBottom);
+            consoleView.TabText = "Chess console";
         }
 
         private void HandleLogEvent(object sender, UCIProcess.UCIDataEventArgs e)
@@ -209,7 +217,10 @@ namespace ChessGUI
             Refresh();
             timerView.StopTimer();
             timerView.ResetTimers();
-            
+
+            chessBoardControl.LastOpponentMove = null;
+            chessBoardControl.ClearSelectiom();
+            chessBoardControl.Refresh();
         }
 
         private void HandleQuit(object sender, EventArgs e)
@@ -229,6 +240,7 @@ namespace ChessGUI
             }
             game.connector.CheckMate += HandleCheckMate;
             game.connector.LogEventReceived += HandleLogEvent;
+            consoleView.InitInterpreter(game);
 
         }
 
@@ -265,7 +277,7 @@ namespace ChessGUI
                     }
                     timerView.ToggleTimer();
                     moveList.SetHistory(board.history);
-                    evaluationView.AddEvaluation(e.Move.Score);
+                    // evaluationView.AddEvaluation(e.Move.Score);
                 }
                 
             });

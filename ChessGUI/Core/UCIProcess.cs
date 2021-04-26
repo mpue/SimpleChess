@@ -74,6 +74,7 @@ namespace UCI.NET
             }
             if (DataReceived != null)
                 DataReceived(this, new UCIDataEventArgs(command));
+            // Console.WriteLine(command);
             _process.StandardInput.WriteLine(command);
             _process.StandardInput.Flush();
         }
@@ -89,6 +90,7 @@ namespace UCI.NET
                 throw new NullReferenceException();
             }
             string output = _process.StandardOutput.ReadLine();
+            // Console.WriteLine(output);
             if (DataSent != null)
                 DataSent(this, new UCIDataEventArgs(output));
             return output;

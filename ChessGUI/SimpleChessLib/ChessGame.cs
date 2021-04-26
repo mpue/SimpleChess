@@ -72,7 +72,9 @@ namespace SimpleChess
             board = new Board();
             // computeBoard = new Board();
             connector = new UCIClient(@"stockfish.exe");
+            // connector = new UCIClient(@"d:\tools\arena\Engines\Ruffian\Ruffian_105.exe");    
             connector.ProcessCompleted += OnMove;
+            
             player = new SoundPlayer(Resources.move);
         }
 
@@ -121,7 +123,7 @@ namespace SimpleChess
             UCIClientEventArgs args = e as UCIClientEventArgs;
             Move move = new Move(board, args.Move);
 
-            Task.Delay(1000).ContinueWith(t =>
+            Task.Delay(100).ContinueWith(t =>
             {
                 move.Score = args.Score;
                 move.Color = Piece.Color.BLACK;

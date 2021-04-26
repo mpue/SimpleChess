@@ -167,17 +167,23 @@ namespace UCI.NET.Core
                 Settings = settings;
             }
 
-            SkillLevel = Settings.SkillLevel;
+            // send("uci");
 
-            foreach (var property in Settings.GetPropertiesAsDictionary())
+            if (isReady())
             {
-                setOption(property.Key, property.Value);
+                SkillLevel = Settings.SkillLevel;
+
+                foreach (var property in Settings.GetPropertiesAsDictionary())
+                {
+                    setOption(property.Key, property.Value);
+                }
+
+                startNewGame();
+
+                _uci.DataReceived += HandleDataReceived;
+                _uci.DataSent += HandleDataReceived;
             }
 
-            startNewGame();
-
-            _uci.DataReceived += HandleDataReceived;
-            _uci.DataSent += HandleDataReceived;
 
         }
 
@@ -291,7 +297,10 @@ namespace UCI.NET.Core
         private List<string> readLineAsList()
         {
             var data = _uci.ReadLine();
-            return data.Split(' ').ToList();
+            if (data != null)
+                return data.Split(' ').ToList();
+            else
+                return new List<string>();
         }
 
         #endregion
@@ -354,11 +363,17 @@ namespace UCI.NET.Core
             {
                 if (tries > MAX_TRIES)
                 {
-                    throw new MaxTriesException();
+                    return "";
                 }
 
                 var data = readLineAsList();
-                if (data[0] == "Fen:")
+
+                if (data == null)
+                {
+                    return "";
+                }
+
+                if (data.Count > 0 && data[0] == "Fen:")
                 {
                     return string.Join(" ", data.GetRange(1, data.Count - 1));
                 }
@@ -405,6 +420,7 @@ namespace UCI.NET.Core
                             _state = UCIClient.Gamestate.CHECKMATE;
                         }
                     }
+                    
                     if (data.Count >= 10)
                     {
                         if (data.Contains("score"))
@@ -419,6 +435,7 @@ namespace UCI.NET.Core
                             }
                         }
                     }
+                    
                 }
 
                 if (data[0] == "bestmove")

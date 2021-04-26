@@ -41,7 +41,7 @@ namespace ChessGUI
 
         GraphicsPath capPath = new GraphicsPath();
 
-        private Move LastOpponentMove { get; set; }
+        public Move LastOpponentMove { get; set; }
 
         public void SetModel(ChessGame game)
         {
@@ -299,6 +299,12 @@ namespace ChessGUI
                 case Piece.Type.EMPTY:
                     break;
             }
+        }
+
+        internal void ClearSelectiom()
+        {
+            currentPiece = null;
+            selectedPiece = null;
         }
     }
 }
