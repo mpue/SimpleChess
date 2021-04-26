@@ -24,10 +24,20 @@ SimpleChess is in very early development stage. So it is currently only possible
 - Undo moves
 - Save and reload your match
 
+# What you cannot do
+
+- En-passant capturing 
+- Choosing to which piece the pawn on the last row is being promoted
+
 # Prerequisites
 
 - Windows 
 - Patience
+
+# Known bugs
+
+- Consolehost is not being closed after program close and remains as a zombie
+- Sometimes the UCI communication is messed up and the board is in undefined state after
 
 # Running
 
