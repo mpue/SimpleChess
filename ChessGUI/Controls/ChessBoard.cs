@@ -247,6 +247,7 @@ namespace ChessGUI
 
         private void HandleCheckMate(object sender, EventArgs e)
         {
+            timerView.StopTimer();
             MessageBox.Show("You are checkmate!");
         }
 

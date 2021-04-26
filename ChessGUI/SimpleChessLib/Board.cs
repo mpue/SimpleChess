@@ -583,7 +583,7 @@ namespace SimpleChess
 
             foreach (Piece p in this.Pieces)
             {
-                if (p.color != color)
+                if (p.color != color && color != Piece.Color.NONE)
                 {
                     if (p.CanMove(this, p.position.col, p.position.row, king.position.col, king.position.row))
                     {
