@@ -123,9 +123,29 @@ namespace ChessGUI.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap king_black_check {
+            get {
+                object obj = ResourceManager.GetObject("king_black_check", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap king_white {
             get {
                 object obj = ResourceManager.GetObject("king_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap king_white_check {
+            get {
+                object obj = ResourceManager.GetObject("king_white_check", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

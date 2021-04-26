@@ -28,9 +28,9 @@ namespace ChessGUI.Core
 
             string subject = tokens[0];
 
-            if (subject == "newgame")
+            if (subject == "move")
             {
-                
+
             }
             if (subject == "getfen")
             {

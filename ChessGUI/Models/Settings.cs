@@ -18,7 +18,7 @@ namespace UCI.NET.Models
             int threads = 0,
             bool ponder = false,
             int multiPV = 1,
-            int skillLevel = 20,
+            int skillLevel = 2,
             int moveOverhead = 30,
             int slowMover = 80,
             bool uciChess960 = false

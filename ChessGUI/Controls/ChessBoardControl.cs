@@ -277,11 +277,25 @@ namespace ChessGUI
                 case Piece.Type.KING:
                     if (piece.color == Piece.Color.BLACK)
                     {
-                        e.Graphics.DrawImage(Resources.king_black, col * pieceSize, row * pieceSize, pieceSize, pieceSize);
+                        if (board.IsInCheck(Piece.Color.BLACK))
+                        {
+                            e.Graphics.DrawImage(Resources.king_black_check, col * pieceSize, row * pieceSize, pieceSize, pieceSize);
+                        }
+                        else
+                        {
+                            e.Graphics.DrawImage(Resources.king_black, col * pieceSize, row * pieceSize, pieceSize, pieceSize);
+                        }
                     }
                     else
                     {
-                        e.Graphics.DrawImage(Resources.king_white, col * pieceSize, row * pieceSize, pieceSize, pieceSize);
+                        if (board.IsInCheck(Piece.Color.WHITE))
+                        {
+                            e.Graphics.DrawImage(Resources.king_white_check, col * pieceSize, row * pieceSize, pieceSize, pieceSize);
+                        }
+                        else
+                        {
+                            e.Graphics.DrawImage(Resources.king_white, col * pieceSize, row * pieceSize, pieceSize, pieceSize);
+                        }
                     }
 
                     break;

@@ -74,8 +74,10 @@ namespace SimpleChess
             connector = new UCIClient(@"stockfish.exe");
             // connector = new UCIClient(@"d:\tools\arena\Engines\Ruffian\Ruffian_105.exe");    
             connector.ProcessCompleted += OnMove;
-            
+
             player = new SoundPlayer(Resources.move);
+            player.Load();
+                
         }
 
         public void Rewind(int moveIndex)
@@ -130,7 +132,7 @@ namespace SimpleChess
                 if (move.Execute())
                 {
 
-                    player.PlaySync();                    
+                    player.Play();                    
                     PieceMoved(this, new PieceMovedEventArgs(move));
                     StorePieces();
 
@@ -211,7 +213,7 @@ namespace SimpleChess
             //    return;
             //}
 
-            player.PlaySync();
+            player.Play();
             move.Color = Piece.Color.WHITE;
 
             if (move.Execute())

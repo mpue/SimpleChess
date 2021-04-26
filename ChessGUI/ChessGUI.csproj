@@ -263,7 +263,9 @@
   <ItemGroup>
     <Content Include="images\chess.ico" />
     <Content Include="images\chess.png" />
-    <Content Include="move.wav" />
+    <Resource Include="move.wav" />
+    <Content Include="images\king_black_check.png" />
+    <Content Include="images\king_white_check.png" />
     <Content Include="text\lesson1_de.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

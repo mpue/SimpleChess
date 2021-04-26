@@ -21,6 +21,7 @@ namespace ChessGUI
             ChessGame game = new ChessGame();
             board.SetModel(game);
             board.Refresh();
+            // board.WindowState = FormWindowState.Maximized;
             Application.Run(board);
         }
     }
