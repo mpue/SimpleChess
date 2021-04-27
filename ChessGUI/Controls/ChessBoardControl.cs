@@ -77,11 +77,24 @@ namespace ChessGUI
             MouseDown += HandleMouseDown;
             MouseUp += HandleMouseUp;
             MouseMove += HandleMouseMove;
+            KeyDown += HandleKeyDown;
             capPath.AddLine(-2, 0, 2, 0);
             capPath.AddLine(-2, 0, 0, 2);
             capPath.AddLine(0, 2, 2, 0);
             movePen.CustomEndCap = new System.Drawing.Drawing2D.CustomLineCap(null, capPath);
             suggestionPen.CustomEndCap = new System.Drawing.Drawing2D.CustomLineCap(null, capPath);
+        }
+
+        private void HandleKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (IsEditing && selectedPiece != null)
+                {
+                    board.Pieces[selectedPiece.position.col, selectedPiece.position.row] = new Empty(Piece.Color.NONE, selectedPiece.position);
+                    Refresh();
+                }
+            }
         }
 
         private void HandleMouseMove(object sender, MouseEventArgs e)
