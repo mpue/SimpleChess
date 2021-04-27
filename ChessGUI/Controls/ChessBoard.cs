@@ -188,9 +188,21 @@ namespace ChessGUI
 
         private void HandleSuggestMove(object sender, EventArgs e)
         {
-            string fen = game.connector.GetFenPosition();
-            MessageBox.Show("The best move is " + game.connector.GetBestMove(), "Suggestion");
-            game.connector.SetFenPosition(fen);
+            List<string> moves = new List<string>();
+            foreach(SimpleChess.Move move in board.history)
+            {
+                moves.Add(move.ToString());
+            }
+            moves.Reverse();
+
+            string bestmove = game.connector.MakeSuggestion(moves.ToArray());
+            if (bestmove != null)
+            {
+                chessBoardControl.BestMove = new SimpleChess.Move(board,bestmove);
+                chessBoardControl.Refresh();
+            }
+
+            // game.connector.SetFenPosition(fen);
         }
 
         private void InitTutorial()
@@ -285,7 +297,7 @@ namespace ChessGUI
                     }
                     // evaluationView.AddEvaluation(e.Move.Score);
                 }
-                
+                chessBoardControl.BestMove = null;
             });
         }
 

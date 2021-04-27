@@ -57,7 +57,7 @@ namespace ChessGUI
             this.listView.Location = new System.Drawing.Point(13, 125);
             this.listView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(527, 964);
+            this.listView.Size = new System.Drawing.Size(505, 322);
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.List;
@@ -217,7 +217,7 @@ namespace ChessGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(553, 1103);
+            this.ClientSize = new System.Drawing.Size(531, 461);
             this.Controls.Add(this.scoreLabelWhite);
             this.Controls.Add(this.scoreLabelBlack);
             this.Controls.Add(this.pawnWhiteCounter);

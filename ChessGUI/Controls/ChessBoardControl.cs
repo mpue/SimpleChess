@@ -37,11 +37,13 @@ namespace ChessGUI
 
         Pen selectionPen = new Pen(Color.Green, 5);
         Pen movePen = new Pen(Color.Orange, 5);
+        Pen suggestionPen = new Pen(Color.Green, 5);
         Brush selectionBrush = new SolidBrush(Color.FromArgb(64, Color.Green));
 
         GraphicsPath capPath = new GraphicsPath();
 
         public Move LastOpponentMove { get; set; }
+        public Move BestMove { get; set; }
 
         public void SetModel(ChessGame game)
         {
@@ -79,6 +81,7 @@ namespace ChessGUI
             capPath.AddLine(-2, 0, 0, 2);
             capPath.AddLine(0, 2, 2, 0);
             movePen.CustomEndCap = new System.Drawing.Drawing2D.CustomLineCap(null, capPath);
+            suggestionPen.CustomEndCap = new System.Drawing.Drawing2D.CustomLineCap(null, capPath);
         }
 
         private void HandleMouseMove(object sender, MouseEventArgs e)
@@ -157,6 +160,9 @@ namespace ChessGUI
                     draggingPiece = true;
                 }
             }
+
+            
+
             Refresh();
         }
 
@@ -223,8 +229,15 @@ namespace ChessGUI
 
 
             }
+            if (BestMove != null)
+            {
 
 
+                e.Graphics.DrawLine(suggestionPen, BestMove.x1 * pieceSize + pieceSize / 2,
+                                        BestMove.y1 * pieceSize + pieceSize / 2,
+                                        BestMove.x2 * pieceSize + pieceSize / 2,
+                                        BestMove.y2 * pieceSize + pieceSize / 2);
+            }
 
         }
 

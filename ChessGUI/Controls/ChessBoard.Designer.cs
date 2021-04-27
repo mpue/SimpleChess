@@ -37,6 +37,7 @@ namespace ChessGUI
             this.newBoardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadPGNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveUCIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.learnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.suggestMoveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,13 +47,13 @@ namespace ChessGUI
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainDock = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -83,31 +84,37 @@ namespace ChessGUI
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
             this.newGameToolStripMenuItem.Text = "New game";
             // 
             // newBoardToolStripMenuItem
             // 
             this.newBoardToolStripMenuItem.Name = "newBoardToolStripMenuItem";
-            this.newBoardToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.newBoardToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
             this.newBoardToolStripMenuItem.Text = "New board";
             // 
             // loadPGNToolStripMenuItem
             // 
             this.loadPGNToolStripMenuItem.Name = "loadPGNToolStripMenuItem";
-            this.loadPGNToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.loadPGNToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
             this.loadPGNToolStripMenuItem.Text = "Load PGN";
             // 
             // saveUCIToolStripMenuItem
             // 
             this.saveUCIToolStripMenuItem.Name = "saveUCIToolStripMenuItem";
-            this.saveUCIToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.saveUCIToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
             this.saveUCIToolStripMenuItem.Text = "Save UCI";
+            // 
+            // configurationToolStripMenuItem
+            // 
+            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
+            this.configurationToolStripMenuItem.Text = "Configuration";
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
             this.quitToolStripMenuItem.Text = "Quit";
             // 
             // learnToolStripMenuItem
@@ -121,7 +128,8 @@ namespace ChessGUI
             // suggestMoveToolStripMenuItem
             // 
             this.suggestMoveToolStripMenuItem.Name = "suggestMoveToolStripMenuItem";
-            this.suggestMoveToolStripMenuItem.Size = new System.Drawing.Size(229, 34);
+            this.suggestMoveToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.suggestMoveToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.suggestMoveToolStripMenuItem.Text = "Suggest move";
             // 
             // moveToolStripMenuItem
@@ -171,12 +179,6 @@ namespace ChessGUI
             this.metroStyleManager1.Owner = this;
             this.metroStyleManager1.Style = MetroFramework.MetroColorStyle.Black;
             this.metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // configurationToolStripMenuItem
-            // 
-            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.configurationToolStripMenuItem.Text = "Configuration";
             // 
             // ChessBoard
             // 

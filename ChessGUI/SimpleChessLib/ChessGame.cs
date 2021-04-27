@@ -125,6 +125,11 @@ namespace SimpleChess
             UCIClientEventArgs args = e as UCIClientEventArgs;
             Move move = new Move(board, args.Move);
 
+            if (args.SuggestOnly)
+            {
+                return;
+            }
+
             Task.Delay(100).ContinueWith(t =>
             {
                 move.Score = args.Score;

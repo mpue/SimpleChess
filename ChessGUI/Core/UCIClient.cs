@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using UCI.NET.Exceptions;
 using UCI.NET.Models;
 using static UCI.NET.UCIProcess;
@@ -21,11 +22,13 @@ namespace UCI.NET.Core
         {
             public string Move { get; set; }
             public int Score { get; }
+            public bool SuggestOnly { get; }
 
-            public UCIClientEventArgs(string move, int score)
+            public UCIClientEventArgs(string move, int score, bool suggestOnly)
             {
                 this.Move = move;
                 Score = score;
+                SuggestOnly = suggestOnly;
             }
         }
         public enum Gamestate
@@ -392,6 +395,53 @@ namespace UCI.NET.Core
             send($"position fen {fenPosition}");
         }
 
+        public string MakeSuggestion(string[] moves)
+        {
+            send($"position startpos moves {movesToString(moves)}");
+
+            while (!isReady())
+            {
+                Thread.Sleep(100);
+            }
+
+            send($"go depth 10");
+
+            while (!isReady())
+            {
+                Thread.Sleep(100);
+            }
+
+
+            var tries = 0;
+
+            while (true)
+            {
+                if (tries > MAX_TRIES)
+                {
+                    throw new MaxTriesException();
+                }
+
+                var data = readLineAsList();
+
+                if (data[0] == "bestmove")
+                {
+                    if (data[1] == "(none)")
+                    {
+                        
+                        return null;
+                    }
+                    else
+                    {
+                        return data[1];
+                    }
+                }
+
+                tries++;
+            }
+            
+        }
+
+
         /// <summary>
         /// Getting best move of current position
         /// </summary>
@@ -410,6 +460,7 @@ namespace UCI.NET.Core
                 }
 
                 var data = readLineAsList();
+
 
                 if (data.Contains("info"))
                 {
@@ -442,12 +493,12 @@ namespace UCI.NET.Core
                 {
                     if (data[1] == "(none)")
                     {
-                        ProcessCompleted(this, new UCIClient.UCIClientEventArgs("none", score));
+                        ProcessCompleted(this, new UCIClient.UCIClientEventArgs("none", score,false));
                         return null;
                     }
                     else
                     {
-                        ProcessCompleted(this, new UCIClient.UCIClientEventArgs(data[1], score));
+                        ProcessCompleted(this, new UCIClient.UCIClientEventArgs(data[1], score, false));
                         return data[1];
                     }
                 }
