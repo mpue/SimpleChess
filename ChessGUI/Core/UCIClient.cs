@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using UCI.NET.Exceptions;
 using UCI.NET.Models;
-using static UCI.NET.UCIProcess;
+using static UCI.NET.ProcessConnector;
 
 namespace UCI.NET.Core
 {
@@ -60,7 +60,7 @@ namespace UCI.NET.Core
         /// <summary>
         /// 
         /// </summary>
-        private UCIProcess _uci { get; set; }
+        private ProcessConnector _uci { get; set; }
 
         #endregion
 
@@ -157,7 +157,7 @@ namespace UCI.NET.Core
             Settings settings = null)
         {
             Depth = depth;
-            _uci = new UCIProcess(path);
+            _uci = new ProcessConnector(path);
             _uci.Start();
             _uci.ReadLine();
 
@@ -190,7 +190,7 @@ namespace UCI.NET.Core
 
         }
 
-        private void HandleDataReceived(object sender, UCIProcess.UCIDataEventArgs e)
+        private void HandleDataReceived(object sender, ProcessConnector.UCIDataEventArgs e)
         {
             LogEventReceived(this, e);
         }
@@ -450,6 +450,7 @@ namespace UCI.NET.Core
         public string GetBestMove()
         {
             go();
+
             var tries = 0;
             int score = 0;
             while (true)
@@ -460,7 +461,6 @@ namespace UCI.NET.Core
                 }
 
                 var data = readLineAsList();
-
 
                 if (data.Contains("info"))
                 {
@@ -546,6 +546,7 @@ namespace UCI.NET.Core
         public bool IsMoveCorrect(string move, params string[] history)
         {
             send($"go depth 1 searchmoves {movesToString(history) + " " + move}");
+         
             var tries = 0;
             while (true)
             {

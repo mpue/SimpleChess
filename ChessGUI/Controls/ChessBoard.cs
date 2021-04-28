@@ -74,7 +74,7 @@ namespace ChessGUI
             consoleView.TabText = "Chess console";
         }
 
-        private void HandleLogEvent(object sender, UCIProcess.UCIDataEventArgs e)
+        private void HandleLogEvent(object sender, ProcessConnector.UCIDataEventArgs e)
         {
             this.Invoke((MethodInvoker)delegate
             {
