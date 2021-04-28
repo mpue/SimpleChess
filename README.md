@@ -1,6 +1,6 @@
 # Welcome to SimpleChess!
 
-SimpleChess is a GUI Frontend for UCI Chess engines
+SimpleChess is a ~~GUI Frontend for UCI Chess engines~~ chess program using the Stockfish engine.
 
 # How does it look?
 
