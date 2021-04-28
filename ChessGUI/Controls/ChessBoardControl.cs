@@ -1,4 +1,5 @@
 ﻿using ChessGUI.Properties;
+using NAudio.Wave;
 using SimpleChess;
 using SimpleChess.Pieces;
 using System;
@@ -54,11 +55,12 @@ namespace ChessGUI
         Brush selectionBrush = new SolidBrush(Color.FromArgb(64, Color.Green));
         Brush moveBrush = new SolidBrush(Color.FromArgb(64, Color.Yellow));
         GraphicsPath capPath = new GraphicsPath();
-        private SoundPlayer player;
-
+        
         public Move LastOpponentMove { get; set; }
         public Move BestMove { get; set; }
 
+        private WaveOutEvent waveout;
+        private WaveFileReader wfr;
         public ChessBoardControl()
         {
             InitializeComponent();
@@ -87,8 +89,11 @@ namespace ChessGUI
             PieceImagesWhite.Add(Piece.Type.KNIGHT, Resources.knight_white);
             PieceImagesWhite.Add(Piece.Type.EMPTY, null);
 
-            player = new SoundPlayer("move.wav");
-            player.Load();
+            waveout = new WaveOutEvent();
+            wfr = new WaveFileReader(@"audio\\move.wav");
+            waveout.Init(wfr);   
+            
+            
         }
 
         public void SetModel(ChessGame game)
@@ -111,11 +116,13 @@ namespace ChessGUI
                 if (e.Move.Color == Piece.Color.BLACK)
                 {
                     LastOpponentMove = e.Move;
+                    waveout.Stop();
+                    wfr.Position = 0;
+                    waveout.Play();
                 }
                 Refresh();
             });
-            player.Play();
-            
+
         }
 
         private void HandleKeyDown(object sender, KeyEventArgs e)
@@ -156,47 +163,42 @@ namespace ChessGUI
 
         private void HandleMouseUp(object sender, MouseEventArgs e)
         {
-            Task.Run(() =>
+            if (IsLocked)
             {
-                if (IsLocked)
+                return;
+            }
+
+            if (currentPiece == null)
+            {
+                return;
+            }
+
+            draggingPiece = false;
+
+            waveout.Stop();
+            wfr.Position = 0;
+            waveout.Play();
+
+            string command = SimpleChess.Move.ColToLetter(currentPiece.position.col) + (8 - currentPiece.position.row) + SimpleChess.Move.ColToLetter(_col) + (8 - _row);
+            if (_col != currentPiece.position.col || _row != currentPiece.position.row)
+            {
+                if (!IsEditing)
                 {
-                    return;
+                    game.ExecuteMove(board, command, currentPiece);
+                    //LastOpponentMove = null;
+                    possibleMoves.Clear();
+                }
+                else
+                {
+                    game.connector.startNewGame();
+                    game.connector.SetFenPosition(board.GetFen());
+                    Move move = new Move(board, command);
+                    move.Execute();
                 }
 
-                if (currentPiece == null)
-                {
-                    return;
-                }
+            }
+            Refresh();
 
-                draggingPiece = false;
-
-                string command = SimpleChess.Move.ColToLetter(currentPiece.position.col) + (8 - currentPiece.position.row) + SimpleChess.Move.ColToLetter(_col) + (8 - _row);
-                if (_col != currentPiece.position.col || _row != currentPiece.position.row)
-                {
-                    if (!IsEditing)
-                    {
-                        game.ExecuteMove(board, command, currentPiece);
-                        //LastOpponentMove = null;
-                        possibleMoves.Clear();
-                    }
-                    else
-                    {
-                        game.connector.startNewGame();
-                        game.connector.SetFenPosition(board.GetFen());
-                        Move move = new Move(board, command);
-                        move.Execute();
-                    }
-
-                }
-
-            }).ContinueWith(result =>
-            {             
-                this.Invoke((MethodInvoker)delegate
-                {
-                    Refresh();
-                });
-            });
-                
         }
 
         private void HandleMouseDown(object sender, MouseEventArgs e)
@@ -259,7 +261,7 @@ namespace ChessGUI
             {
                 foreach (Piece piece in board.Pieces)
                 {
-                    
+
                     if (draggingPiece && currentPiece != null && piece == currentPiece)
                     {
                         e.Graphics.FillRectangle(moveBrush, _col * pieceSize, _row * pieceSize, pieceSize, pieceSize);

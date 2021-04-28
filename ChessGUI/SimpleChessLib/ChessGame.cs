@@ -12,7 +12,7 @@ namespace SimpleChess
     public class ChessGame
     {
         public UCIClient connector;
-        
+
 
         private string lastFenPosition = "";
 
@@ -74,9 +74,6 @@ namespace SimpleChess
             connector = new UCIClient(@"stockfish.exe");
             // connector = new UCIClient(@"d:\tools\arena\Engines\Ruffian\Ruffian_105.exe");    
             connector.ProcessCompleted += OnMove;
-
-
-                
         }
 
         public void Rewind(int moveIndex)
@@ -129,13 +126,13 @@ namespace SimpleChess
                 return;
             }
 
-            Task.Delay(10).ContinueWith(t =>
+            Task.Delay(500).ContinueWith(t =>
             {
                 move.Score = args.Score;
                 move.Color = Piece.Color.BLACK;
                 if (move.Execute())
                 {
-              
+
                     PieceMoved(this, new PieceMovedEventArgs(move));
                     StorePieces();
 
@@ -143,7 +140,7 @@ namespace SimpleChess
                     {
                         Move shortCastle = new Move(board, "h8f8");
                         shortCastle.IsCastle = true;
-                        shortCastle.Execute();                        
+                        shortCastle.Execute();
                         PieceMoved(this, new PieceMovedEventArgs(shortCastle));
                     }
                     if (move.ToString() == "e8c8") // castling long black
@@ -206,7 +203,7 @@ namespace SimpleChess
                 return;
             }
 
-            if (!piece.CanMove(board, move.x1,move.y1, move.x2, move.y2))
+            if (!piece.CanMove(board, move.x1, move.y1, move.x2, move.y2))
             {
                 return;
             }
@@ -222,30 +219,33 @@ namespace SimpleChess
 
                     return;
                 }
-        
+
                 StorePieces();
                 if (move.ToString() == "e1g1") // castling short white
                 {
                     Move shortCastle = new Move(board, "h1f1");
                     shortCastle.IsCastle = true;
                     shortCastle.Execute();
-            
+
                     PieceMoved(this, new PieceMovedEventArgs(shortCastle));
                 }
                 if (move.ToString() == "e1c1") // castling long white
                 {
                     Move shortCastle = new Move(board, "a1g1");
                     shortCastle.IsCastle = true;
-                    shortCastle.Execute ();
-            
+                    shortCastle.Execute();
+
                     PieceMoved(this, new PieceMovedEventArgs(shortCastle));
                 }
 
-                string response = connector.Move(move.ToString());
-                OnLogEvent(this, new LogEventArgs(response));
-                lastFenPosition = connector.GetFenPosition();
+                Task.Run(() =>
+                {
+                    string response = connector.Move(move.ToString());
+                    OnLogEvent(this, new LogEventArgs(response));
+                    lastFenPosition = connector.GetFenPosition();
 
-                PieceMoved(this, new PieceMovedEventArgs(move));
+                    PieceMoved(this, new PieceMovedEventArgs(move));
+                });
             }
 
 
