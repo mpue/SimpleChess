@@ -12,7 +12,7 @@ namespace SimpleChess
     public class ChessGame
     {
         public UCIClient connector;
-        private SoundPlayer player;
+        
 
         private string lastFenPosition = "";
 
@@ -75,8 +75,7 @@ namespace SimpleChess
             // connector = new UCIClient(@"d:\tools\arena\Engines\Ruffian\Ruffian_105.exe");    
             connector.ProcessCompleted += OnMove;
 
-            player = new SoundPlayer(Resources.move);
-            player.Load();
+
                 
         }
 
@@ -130,14 +129,13 @@ namespace SimpleChess
                 return;
             }
 
-            Task.Delay(100).ContinueWith(t =>
+            Task.Delay(10).ContinueWith(t =>
             {
                 move.Score = args.Score;
                 move.Color = Piece.Color.BLACK;
                 if (move.Execute())
                 {
-
-                    player.Play();                    
+              
                     PieceMoved(this, new PieceMovedEventArgs(move));
                     StorePieces();
 
@@ -213,12 +211,6 @@ namespace SimpleChess
                 return;
             }
 
-            //if (!IsValidMove(move, piece)) 
-            //{
-            //    return;
-            //}
-
-            player.Play();
             move.Color = Piece.Color.WHITE;
 
             if (move.Execute())
