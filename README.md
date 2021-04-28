@@ -23,6 +23,7 @@ SimpleChess is in very early development stage. So it is currently only possible
 - Load PGN files and view the match
 - Undo moves
 - Save and reload your match
+- Get move suggestions from the engine
 
 # What you cannot do
 
