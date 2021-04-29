@@ -133,6 +133,16 @@ namespace ChessGUI.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clock_bg {
+            get {
+                object obj = ResourceManager.GetObject("clock_bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap king_black {
             get {
                 object obj = ResourceManager.GetObject("king_black", resourceCulture);
@@ -404,6 +414,16 @@ namespace ChessGUI.Properties {
         internal static System.Drawing.Bitmap rook_white_32 {
             get {
                 object obj = ResourceManager.GetObject("rook_white_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap splash {
+            get {
+                object obj = ResourceManager.GetObject("splash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

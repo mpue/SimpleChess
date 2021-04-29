@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessGUI.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,12 +26,26 @@ namespace ChessGUI
         {
             ticksWhite++;
             SetTime(timeLabelWhite, ticksWhite);
+            int minutes = ticksWhite / 60;
+            int seconds = (ticksWhite - minutes) % 60;
+            SetTime(clockWhite, 0, minutes, seconds);
         }
 
         private void timerBlack_Tick(object sender, EventArgs e)
         {
             ticksBlack++;
             SetTime(timeLabalBlack, ticksBlack);
+            int minutes = ticksBlack / 60;
+            int seconds = (ticksBlack - minutes) % 60;
+            SetTime(clockBlack, 0, minutes, seconds);
+
+        }
+
+        private void SetTime(ChessClock clock, int hours, int minutes, int seconds)
+        {
+            clock.Seconds = seconds;
+            clock.Minutes = minutes;
+            clock.Hours = hours;
         }
 
         private void SetTime(Label label, int ticks)
@@ -63,6 +78,8 @@ namespace ChessGUI
             ticksBlack = 0;
             SetTime(timeLabelWhite, ticksWhite);
             SetTime(timeLabalBlack, ticksBlack);
+            SetTime(clockBlack, 0, 0, 0);
+            SetTime(clockWhite, 0, 0, 0);
         }
 
         public void StartTimer()

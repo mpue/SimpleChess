@@ -25,8 +25,8 @@ namespace ChessGUI
         private Dictionary<Piece.Type, Bitmap> PieceImagesBlack = new Dictionary<Piece.Type, Bitmap>();
         private Dictionary<Piece.Type, Bitmap> PieceImagesWhite = new Dictionary<Piece.Type, Bitmap>();
 
-        string[] letters = { "A","B","C","D","E","F","G","H"};
-        private Font boardFont = new Font("Verdana",6);
+        string[] letters = { "A", "B", "C", "D", "E", "F", "G", "H" };
+        private Font boardFont = new Font("Verdana", 6);
         public bool IsLocked { get; set; } = false;
         public bool IsEditing { get; set; } = false;
 
@@ -237,21 +237,23 @@ namespace ChessGUI
 
         protected override void OnResize(EventArgs e)
         {
-            Width = Height;
+            Width = Height;                
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            
+
+            DrawBoard(e);
+
             int pieceSize = Width / 8;
 
             for (int x = 0; x < 8; x++)
             {
-                if (x % 2 == 0) 
+                if (x % 2 == 0)
                     e.Graphics.DrawString(letters[x], boardFont, Brushes.White, x * pieceSize + 10, Height - 10);
                 else
-                    e.Graphics.DrawString(letters[x], boardFont,Brushes.LightBlue, x * pieceSize + 10, Height - 10);
+                    e.Graphics.DrawString(letters[x], boardFont, Brushes.LightBlue, x * pieceSize + 10, Height - 10);
             }
 
             for (int y = 8; y > 0; y--)
@@ -306,15 +308,54 @@ namespace ChessGUI
             }
         }
 
+        private void DrawBoard(PaintEventArgs e)
+        {
+            int pieceSize = Width / 8;
+
+            for (int y = 0; y < 8; y++)
+            {
+                for (int x = 0; x < 8; x++)
+                {
+                    if ((x + y) % 2 == 0)
+                    {
+                        e.Graphics.FillRectangle(Brushes.White, x * pieceSize, y * pieceSize, pieceSize, pieceSize);
+                    }
+                    else
+                    {
+                        e.Graphics.FillRectangle(Brushes.LightBlue, x * pieceSize, y * pieceSize, pieceSize, pieceSize);
+                        
+                    }
+                    
+
+                }
+            }
+        }
+
         private void DrawPiece(PaintEventArgs e, Piece piece, int pieceSize, int x, int y)
         {
             if (piece.color == Piece.Color.BLACK)
             {
-                e.Graphics.DrawImage(PieceImagesBlack[piece.type], x, y, pieceSize, pieceSize);
+                if (board.IsInCheck(piece.color) && piece.type == Piece.Type.KING)
+                {
+                    e.Graphics.DrawImage(Resources.king_black_check, x, y, pieceSize, pieceSize);
+                }
+                else
+                {
+                    e.Graphics.DrawImage(PieceImagesBlack[piece.type], x, y, pieceSize, pieceSize);
+                }
+
             }
             else if (piece.color == Piece.Color.WHITE)
             {
-                e.Graphics.DrawImage(PieceImagesWhite[piece.type], x, y, pieceSize, pieceSize);
+                if (board.IsInCheck(piece.color) && piece.type == Piece.Type.KING)
+                {
+                    e.Graphics.DrawImage(Resources.king_white_check, x, y, pieceSize, pieceSize);
+                }
+                else
+                {
+                    e.Graphics.DrawImage(PieceImagesWhite[piece.type], x, y, pieceSize, pieceSize);
+                }
+
             }
         }
 

@@ -74,6 +74,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
@@ -110,6 +111,13 @@
     <Compile Include="Controls\ChessBoardControl.Designer.cs">
       <DependentUpon>ChessBoardControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ChessClock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ChessClock.Designer.cs">
+      <DependentUpon>ChessClock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ChessClockDesigner.cs" />
     <Compile Include="Controls\ChessConsole.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -145,6 +153,12 @@
     </Compile>
     <Compile Include="Controls\NoteView.Designer.cs">
       <DependentUpon>NoteView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Splash.Designer.cs">
+      <DependentUpon>Splash.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\Interpreter.cs" />
     <Compile Include="Core\PGNImporter.cs" />
@@ -186,6 +200,9 @@
     <EmbeddedResource Include="Controls\ChessBoard.resx">
       <DependentUpon>ChessBoard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ChessClock.resx">
+      <DependentUpon>ChessClock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ChessConsole.resx">
       <DependentUpon>ChessConsole.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,6 +220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\NoteView.resx">
       <DependentUpon>NoteView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Splash.resx">
+      <DependentUpon>Splash.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -303,6 +323,7 @@
     <Content Include="images\bishop_white_32.png" />
     <Content Include="images\chess.ico" />
     <Content Include="images\chess.png" />
+    <Content Include="images\clock_bg.png" />
     <Content Include="images\king_black_32.png" />
     <Content Include="images\king_black_check.png" />
     <Content Include="images\king_white_32.png" />
@@ -315,6 +336,7 @@
     <Content Include="images\queen_white_32.png" />
     <Content Include="images\rook_black_32.png" />
     <Content Include="images\rook_white_32.png" />
+    <Content Include="images\splash.png" />
     <Content Include="pgn-extract.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
