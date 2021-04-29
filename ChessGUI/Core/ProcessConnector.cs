@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 
 namespace UCI.NET
@@ -105,7 +103,7 @@ namespace UCI.NET
         /// <summary>
         /// This method is allowing to close Stockfish process
         /// </summary>
-        ~ProcessConnector()
+        public void Close()
         {
             //When process is going to be destructed => we are going to close stockfish process
             _process.Close();

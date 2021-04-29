@@ -9,6 +9,8 @@ namespace ChessGUI
 {
     static class Program
     {
+        static ChessGame chess;
+
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
@@ -18,11 +20,17 @@ namespace ChessGUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             ChessBoard board = new ChessBoard();
-            ChessGame game = new ChessGame();
-            board.SetModel(game);
+            chess = new ChessGame();
+            board.SetModel(chess);
             board.Refresh();
             // board.WindowState = FormWindowState.Maximized;
+            Application.ApplicationExit += OnExit;
             Application.Run(board);
+        }
+
+        private static void OnExit(object sender, EventArgs e)
+        {
+            chess.connector.Quit();
         }
     }
 }

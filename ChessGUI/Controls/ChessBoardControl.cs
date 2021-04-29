@@ -25,6 +25,8 @@ namespace ChessGUI
         private Dictionary<Piece.Type, Bitmap> PieceImagesBlack = new Dictionary<Piece.Type, Bitmap>();
         private Dictionary<Piece.Type, Bitmap> PieceImagesWhite = new Dictionary<Piece.Type, Bitmap>();
 
+        string[] letters = { "A","B","C","D","E","F","G","H"};
+        private Font boardFont = new Font("Verdana",6);
         public bool IsLocked { get; set; } = false;
         public bool IsEditing { get; set; } = false;
 
@@ -55,7 +57,7 @@ namespace ChessGUI
         Brush selectionBrush = new SolidBrush(Color.FromArgb(64, Color.Green));
         Brush moveBrush = new SolidBrush(Color.FromArgb(64, Color.Yellow));
         GraphicsPath capPath = new GraphicsPath();
-        
+
         public Move LastOpponentMove { get; set; }
         public Move BestMove { get; set; }
 
@@ -91,9 +93,9 @@ namespace ChessGUI
 
             waveout = new WaveOutEvent();
             wfr = new WaveFileReader(@"audio\\move.wav");
-            waveout.Init(wfr);   
-            
-            
+            waveout.Init(wfr);
+
+
         }
 
         public void SetModel(ChessGame game)
@@ -230,8 +232,6 @@ namespace ChessGUI
                 }
             }
 
-
-
             Refresh();
         }
 
@@ -243,8 +243,25 @@ namespace ChessGUI
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-
+            
             int pieceSize = Width / 8;
+
+            for (int x = 0; x < 8; x++)
+            {
+                if (x % 2 == 0) 
+                    e.Graphics.DrawString(letters[x], boardFont, Brushes.White, x * pieceSize + 10, Height - 10);
+                else
+                    e.Graphics.DrawString(letters[x], boardFont,Brushes.LightBlue, x * pieceSize + 10, Height - 10);
+            }
+
+            for (int y = 8; y > 0; y--)
+            {
+                if (y % 2 == 0)
+                    e.Graphics.DrawString((9 - y).ToString(), boardFont, Brushes.LightBlue, Width - 10, y * pieceSize - 10);
+                else
+                    e.Graphics.DrawString((9 - y).ToString(), boardFont, Brushes.White, Width - 10, y * pieceSize - 10);
+            }
+
 
             if (selectedPiece != null)
             {
@@ -253,7 +270,6 @@ namespace ChessGUI
                 foreach (Move m in possibleMoves)
                 {
                     e.Graphics.FillRectangle(selectionBrush, m.x2 * pieceSize, m.y2 * pieceSize, pieceSize, pieceSize);
-
                 }
             }
 
@@ -261,12 +277,10 @@ namespace ChessGUI
             {
                 foreach (Piece piece in board.Pieces)
                 {
-
                     if (draggingPiece && currentPiece != null && piece == currentPiece)
                     {
                         e.Graphics.FillRectangle(moveBrush, _col * pieceSize, _row * pieceSize, pieceSize, pieceSize);
                         DrawPiece(e, currentPiece, pieceSize, mouseX - (dragStartX - pieceStartX), mouseY - (dragStartY - pieceStartY));
-
                     }
                     else
                     {
@@ -278,25 +292,18 @@ namespace ChessGUI
 
             if (LastOpponentMove != null)
             {
-
-
                 e.Graphics.DrawLine(movePen, LastOpponentMove.x1 * pieceSize + pieceSize / 2,
                                         LastOpponentMove.y1 * pieceSize + pieceSize / 2,
                                         LastOpponentMove.x2 * pieceSize + pieceSize / 2,
                                         LastOpponentMove.y2 * pieceSize + pieceSize / 2);
-
-
             }
             if (BestMove != null)
             {
-
-
                 e.Graphics.DrawLine(suggestionPen, BestMove.x1 * pieceSize + pieceSize / 2,
                                         BestMove.y1 * pieceSize + pieceSize / 2,
                                         BestMove.x2 * pieceSize + pieceSize / 2,
                                         BestMove.y2 * pieceSize + pieceSize / 2);
             }
-
         }
 
         private void DrawPiece(PaintEventArgs e, Piece piece, int pieceSize, int x, int y)

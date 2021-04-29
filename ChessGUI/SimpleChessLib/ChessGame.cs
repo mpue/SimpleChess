@@ -13,7 +13,6 @@ namespace SimpleChess
     {
         public UCIClient connector;
 
-
         private string lastFenPosition = "";
 
         public Board Board
@@ -38,7 +37,6 @@ namespace SimpleChess
             public Move Move { get; private set; }
         }
 
-
         public class LogEventArgs : EventArgs
         {
             public LogEventArgs(string m)
@@ -49,17 +47,14 @@ namespace SimpleChess
             public string Message { get; private set; }
         }
 
-
         public delegate void PieceMovedHandler(object sender, PieceMovedEventArgs e);
         public event PieceMovedHandler PieceMoved;
 
         public delegate void CheckMateHandler(object sender, PieceMovedEventArgs e);
         public event CheckMateHandler CheckMate;
 
-
         public delegate void LogHandler(object sender, LogEventArgs e);
         public event LogHandler OnLogEvent;
-
 
         public int MAXDEPTH = 3;
 
@@ -69,11 +64,14 @@ namespace SimpleChess
 
         public ChessGame()
         {
-            board = new Board();
-            // computeBoard = new Board();
-            connector = new UCIClient(@"stockfish.exe");
-            // connector = new UCIClient(@"d:\tools\arena\Engines\Ruffian\Ruffian_105.exe");    
+            board = new Board();            
+            connector = new UCIClient(@"stockfish.exe");            
             connector.ProcessCompleted += OnMove;
+        }
+
+        public void Quit()
+        {
+            connector.Quit();
         }
 
         public void Rewind(int moveIndex)
@@ -99,7 +97,6 @@ namespace SimpleChess
             connector.ResetGame();
             connector.SetPosition(moves.ToArray());
         }
-
 
         public void UndoLast()
         {
@@ -131,8 +128,7 @@ namespace SimpleChess
                 move.Score = args.Score;
                 move.Color = Piece.Color.BLACK;
                 if (move.Execute())
-                {
-
+                { 
                     PieceMoved(this, new PieceMovedEventArgs(move));
                     StorePieces();
 
@@ -157,8 +153,6 @@ namespace SimpleChess
                     }
                 }
             });
-
-
         }
 
         public void StorePieces()
@@ -175,7 +169,6 @@ namespace SimpleChess
 
             board.pieceHistory.Add(pieces);
         }
-
 
         public bool IsValidMove(Move m, Piece p)
         {
@@ -216,7 +209,6 @@ namespace SimpleChess
                 {
                     move.Undo();
                     board.history.Pop();
-
                     return;
                 }
 
@@ -247,9 +239,6 @@ namespace SimpleChess
                     PieceMoved(this, new PieceMovedEventArgs(move));
                 });
             }
-
-
         }
-
     }
 }

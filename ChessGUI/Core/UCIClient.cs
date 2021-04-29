@@ -143,6 +143,11 @@ namespace UCI.NET.Core
 
         #endregion
 
+        public void Quit()
+        {
+            _uci.Close();
+        }
+
         # region constructor
 
         /// <summary>
