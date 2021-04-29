@@ -41,7 +41,7 @@ namespace ChessGUI
 
         }
 
-        private void SetTime(ChessClock clock, int hours, int minutes, int seconds)
+        private void SetTime(ChessClock_ clock, int hours, int minutes, int seconds)
         {
             clock.Seconds = seconds;
             clock.Minutes = minutes;

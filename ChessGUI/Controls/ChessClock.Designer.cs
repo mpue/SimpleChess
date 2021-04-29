@@ -1,7 +1,7 @@
 ﻿
 namespace ChessGUI.Controls
 {
-    partial class ChessClock
+    partial class ChessClock_
     {
         /// <summary> 
         /// Erforderliche Designervariable.
@@ -31,12 +31,13 @@ namespace ChessGUI.Controls
         {
             this.SuspendLayout();
             // 
-            // ChessClock
+            // ChessClock_
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "ChessClock";
-            this.Size = new System.Drawing.Size(262, 267);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Name = "ChessClock_";
+            this.Size = new System.Drawing.Size(393, 411);
             this.ResumeLayout(false);
 
         }

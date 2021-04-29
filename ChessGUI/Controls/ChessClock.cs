@@ -6,8 +6,8 @@ using System.Windows.Forms;
 
 namespace ChessGUI.Controls
 {
-    [Designer(typeof(ChessClockDesigner))]
-    public partial class ChessClock : UserControl
+
+    public partial class ChessClock_ : UserControl
     {
         Pen secondHandPen = new Pen(Color.Red, 2);
         Pen minuteHandPen = new Pen(Color.Black, 5);
@@ -60,7 +60,7 @@ namespace ChessGUI.Controls
         }
 
 
-        public ChessClock()
+        public ChessClock_()
         {
             InitializeComponent();
         }

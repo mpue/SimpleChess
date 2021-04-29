@@ -117,7 +117,6 @@
     <Compile Include="Controls\ChessClock.Designer.cs">
       <DependentUpon>ChessClock.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ChessClockDesigner.cs" />
     <Compile Include="Controls\ChessConsole.cs">
       <SubType>Component</SubType>
     </Compile>

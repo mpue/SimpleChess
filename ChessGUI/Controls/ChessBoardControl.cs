@@ -170,7 +170,7 @@ namespace ChessGUI
                 return;
             }
 
-            if (currentPiece == null)
+            if (currentPiece == null || currentPiece.color == Piece.Color.BLACK)
             {
                 return;
             }
@@ -218,7 +218,7 @@ namespace ChessGUI
             int pieceSize = Width / 8;
 
             currentPiece = board.Pieces[_col, _row];
-            if (currentPiece.type != Piece.Type.EMPTY)
+            if (currentPiece.type != Piece.Type.EMPTY && currentPiece.color == Piece.Color.WHITE)
             {
                 selectedPiece = currentPiece;
                 possibleMoves = currentPiece.FindPossibleMoves(board);
